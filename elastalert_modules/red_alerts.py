@@ -12,8 +12,7 @@ class SlackPasswordAlerter(Alerter):
     def send_slack_msg(self, sendstr):
         sc = WebClient(self.sk)
         api_call = sc.api_call(
-        "channels.list",
-        exclude_archived=1
+        "channels.list"
         )   
         channels = api_call.get('channels')
         for ch in channels:
