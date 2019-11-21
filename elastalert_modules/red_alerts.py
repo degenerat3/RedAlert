@@ -36,7 +36,7 @@ class SlackPasswordAlerter(Alerter):
                 # basic_match_string will transform the match into the default
                 # human readable string format
                 match_string = str(BasicMatchString(self.rule, match))
-                send_slack_msg(match_string)
+                self.send_slack_msg(match_string)
                 #output_file.write(match_string)
 
     # get_info is called after an alert is sent to get data that is written back
