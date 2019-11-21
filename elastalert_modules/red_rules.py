@@ -3,7 +3,7 @@ import sqlite3
 
 class NewPassRule(RuleType):
 
-    def __init__(self):
+    def __init__(self, rules, args=None):
         if not os.path.exists("creddb.sqlite"):
             c = create_connection("creddb.sqlite")
             c.execute('''CREATE TABLE creds
