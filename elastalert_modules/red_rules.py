@@ -5,27 +5,27 @@ class NewPassRule(RuleType):
 
     def __init__(self):
         if not os.path.exists("creddb.sqlite"):
-        c = create_connection("creddb.sqlite")
-        c.execute('''CREATE TABLE creds
-                ([generated_id] INTEGER PRIMARY KEY,[host] text, [user] text, [credential] text)''')
-        c.close()
+            c = create_connection("creddb.sqlite")
+            c.execute('''CREATE TABLE creds
+                    ([generated_id] INTEGER PRIMARY KEY,[host] text, [user] text, [credential] text)''')
+            c.close()
 
     # The results of get_match_str will appear in the alert text
     def get_match_str(self, match):
         return "New cred for %s:%s:  %s" % (match['host'], match['username'], match['credential'])
-        
+
     def garbage_collect(self, timestamp):
         pass
 
-   def create_connection(db_file):
-    """ create a database connection to a SQLite database """
-    conn = None
-    try:
-        conn = sqlite3.connect(db_file)
-        print(sqlite3.version)
-    except Error as e:
-        print(e)
-    return conn
+    def create_connection(db_file):
+        """ create a database connection to a SQLite database """
+        conn = None
+        try:
+            conn = sqlite3.connect(db_file)
+            print(sqlite3.version)
+        except Error as e:
+            print(e)
+        return conn
 
     def select_cred(conn, host, user):
         cur = conn.cursor()
