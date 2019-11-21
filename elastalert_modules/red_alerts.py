@@ -12,13 +12,15 @@ class SlackPasswordAlerter(Alerter):
     def send_slack_msg(self, sendstr):
         tok = self.sk
         sc = WebClient(token=tok)  
-        channels = sc.channels_list(exclude_archived=1)
+        channels = sc.channels_list(exclude_archived=1).get('channels')
+        scid = ""
         for ch in channels:
             if ch.get('name') == self.scn:
                 scid = ch.get('id')
                 break
             else:
                 scid = ""
+        print(scid)
         sc.chat_postMessage(
             channel=scid,
             text=sendstr
