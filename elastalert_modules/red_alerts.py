@@ -13,12 +13,17 @@ class SlackPasswordAlerter(Alerter):
         tok = self.sk
         sc = WebClient(token=tok)  
         channels = sc.channels_list(exclude_archived=1)
+        print("channels: " + str(channels))
         for ch in channels:
+            print(ch.get('name') + " " + ch.get("id"))
             if ch.get('name') == self.scn:
                 scid = ch.get('id')
+                break
+            else:
+                scid = ""
         sc.chat_postMessage(
             channel=scid,
-            text="Hello from your app! :tada:"
+            text=sendstr
         )
         return
 
@@ -31,7 +36,7 @@ class SlackPasswordAlerter(Alerter):
         for match in matches:
                 # basic_match_string will transform the match into the default
                 # human readable string format
-                match_string = str(BasicMatchString(self.rule, match))
+                match_string = "rotating_light: :rotating_light: " + str(BasicMatchString(self.rule, match))
                 self.send_slack_msg(match_string)
                 #output_file.write(match_string)
 
