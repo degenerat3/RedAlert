@@ -30,7 +30,7 @@ class SlackPasswordAlerter(Alerter):
     def alert(self, matches):
 
         for match in matches:
-                match_string = ":rotating_light: :rotating_light: New credential for {}: {}: {}".format(match['host'], match['username'], match['password'])
+                match_string = ":rotating_light: :rotating_light: New credential for {}: {}: {}".format(match['victim'], match['username'], match['password'])
                 self.send_slack_msg(match_string)
 
     def get_info(self):

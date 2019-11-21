@@ -8,7 +8,7 @@ filter:
     query_string:
       query: "logtype: CREDENTIAL"
 include:
-- "host"
+- "victim"
 - "username"
 - "password"
 alert:
