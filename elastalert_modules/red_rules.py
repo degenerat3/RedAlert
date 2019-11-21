@@ -14,7 +14,7 @@ class NewPassRule(RuleType):
 
     # The results of get_match_str will appear in the alert text
     def get_match_str(self, match):
-        return "New cred for %s:%s:  %s" % (match['host'], match['username'], match['credential'])
+        return "New cred for %s:%s:  %s" % (match['host'], match['username'], match['password'])
 
     def garbage_collect(self, timestamp):
         pass
