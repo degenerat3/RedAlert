@@ -39,18 +39,8 @@ class NewPassRule(RuleType):
             return True
         return False
 
-    def create_connection(db_file):
-        """ create a database connection to a SQLite database """
-        conn = None
-        try:
-            conn = sqlite3.connect("creddb.sqlite")
-            print(sqlite3.version)
-        except Error as e:
-            print(e)
-        return conn
-
     def add_data(self, data):
-        conn = create_connection("creddb.sqlite")
+        conn = sqlite3.connect("creddb.sqlite")
         for document in data:
             host = document['host']
             user = document['username']
