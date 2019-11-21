@@ -29,7 +29,7 @@ class NewPassRule(RuleType):
         except:
             return ""
     
-    def new_cred(conn, host, user, credential):
+    def new_cred(self, conn, host, user, credential):
         cur = conn.cursor()
         stored_cred = self.select_cred(conn, host, user)
         if stored_cred != credential:
