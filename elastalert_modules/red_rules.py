@@ -5,7 +5,7 @@ import os
 class NewPassRule(RuleType):
 
     def __init__(self, rules, args=None):
-        super(NewPassRule, self).__init__(rule, args)
+        super(NewPassRule, self).__init__(rules, args)
         if not os.path.exists("creddb.sqlite"):
             c = sqlite3.connect("creddb.sqlite")
             c.execute('''CREATE TABLE creds
