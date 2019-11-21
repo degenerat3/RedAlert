@@ -5,6 +5,7 @@ from slackclient import SlackClient
 class SlackPasswordAlerter(Alerter):
 
     def __init__(self, rule):
+        super(SlackPasswordAlerter, self).__init__(rule)
         self.sk = os.environ.get('SLACK_KEY')    # get slack api key
         self.scn = os.environ.get('SLACK_CHANNEL_NAME', 'password-alerts')     # get channel name
 
