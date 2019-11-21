@@ -44,7 +44,7 @@ class NewPassRule(RuleType):
         for document in data:
             host = document['host']
             user = document['username']
-            credential = document['credential']
+            credential = document['password']
             if new_cred(conn, host, user, credential):
                 self.add_match(document)
 
