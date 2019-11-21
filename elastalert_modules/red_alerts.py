@@ -10,7 +10,7 @@ class SlackPasswordAlerter(Alerter):
         self.scn = os.environ.get('SLACK_CHANNEL_NAME', 'password-alerts')     # get channel name
 
     def send_slack_msg(self, sendstr):
-        sc = WebClient(self.sk)
+        sc = WebClient(token=self.sk)
         api_call = sc.api_call(
         "channels.list"
         )   
