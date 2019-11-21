@@ -18,7 +18,7 @@ class NewPassRule(RuleType):
     def garbage_collect(self, timestamp):
         pass
 
-    def select_cred(conn, host, user):
+    def select_cred(self, conn, host, user):
         cur = conn.cursor()
         cur.execute("SELECT credential FROM creds WHERE host=? AND user=?", (host, user))
         cred = cur.fetchall()
