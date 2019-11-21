@@ -1,5 +1,6 @@
 from elastalert.ruletypes import RuleType
 import sqlite3
+import os
 
 class NewPassRule(RuleType):
 
