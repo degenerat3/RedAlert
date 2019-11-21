@@ -1,0 +1,13 @@
+name: "New Password Rule"
+es_host: elasticsearch_url
+es_port: elasticsearch_port
+type: "elastalert_modules.red_rules.NewPassRule"
+- query:
+    query_string:
+      query: "logtype: CREDENTIAL"
+include:
+- "host"
+- "username"
+= "credential"
+alert:
+- "elastalert_modules.red_alerts.SlackPasswordAlerter"
