@@ -3,6 +3,15 @@ import sqlite3
 import os
 
 class NewPassRule(RuleType):
+    def create_connection(db_file):
+        """ create a database connection to a SQLite database """
+        conn = None
+        try:
+            conn = sqlite3.connect(db_file)
+            print(sqlite3.version)
+        except Error as e:
+            print(e)
+        return conn
 
     def __init__(self, rules, args=None):
         if not os.path.exists("creddb.sqlite"):
@@ -17,16 +26,6 @@ class NewPassRule(RuleType):
 
     def garbage_collect(self, timestamp):
         pass
-
-    def create_connection(db_file):
-        """ create a database connection to a SQLite database """
-        conn = None
-        try:
-            conn = sqlite3.connect(db_file)
-            print(sqlite3.version)
-        except Error as e:
-            print(e)
-        return conn
 
     def select_cred(conn, host, user):
         cur = conn.cursor()
