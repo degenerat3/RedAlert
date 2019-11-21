@@ -31,7 +31,7 @@ class NewPassRule(RuleType):
     
     def new_cred(conn, host, user, credential):
         cur = conn.cursor()
-        stored_cred = select_cred(conn, host, user)
+        stored_cred = self.select_cred(conn, host, user)
         if stored_cred != credential:
             cur.execute("INSERT or REPLACE INTO creds (generated_id, host, user, credential) values ((select generated_id from creds where host = ? and user = ?), ?, ?, ?)", (host, user, host, user, credential))
             conn.commit()
@@ -45,7 +45,7 @@ class NewPassRule(RuleType):
             host = document['host']
             user = document['username']
             credential = document['password']
-            if new_cred(conn, host, user, credential):
+            if self.new_cred(conn, host, user, credential):
                 self.add_match(document)
 
 
