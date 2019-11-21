@@ -7,7 +7,7 @@ class NewPassRule(RuleType):
         """ create a database connection to a SQLite database """
         conn = None
         try:
-            conn = sqlite3.connect(db_file)
+            conn = sqlite3.connect("creddb.sqlite")
             print(sqlite3.version)
         except Error as e:
             print(e)
@@ -15,7 +15,7 @@ class NewPassRule(RuleType):
 
     def __init__(self, rules, args=None):
         if not os.path.exists("creddb.sqlite"):
-            c = create_connection("creddb.sqlite")
+            c = sqlite3.connect("creddb.sqlite")
             c.execute('''CREATE TABLE creds
                     ([generated_id] INTEGER PRIMARY KEY,[host] text, [user] text, [credential] text)''')
             c.close()
