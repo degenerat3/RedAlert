@@ -1,6 +1,7 @@
 name: "New Password Rule"
 es_host: elasticsearch_url
 es_port: elasticsearch_port
+index: logstash*
 type: "elastalert_modules.red_rules.NewPassRule"
 filter:
 - query:
