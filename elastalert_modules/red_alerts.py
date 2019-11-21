@@ -13,9 +13,7 @@ class SlackPasswordAlerter(Alerter):
         tok = self.sk
         sc = WebClient(token=tok)  
         channels = sc.channels_list(exclude_archived=1)
-        print("channels: " + str(channels))
         for ch in channels:
-            print(ch.get('name') + " " + ch.get("id"))
             if ch.get('name') == self.scn:
                 scid = ch.get('id')
                 break
