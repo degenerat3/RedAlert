@@ -1,2 +1,2 @@
 # RedAlert
-ElastAlert for red team
+ElastAlert for redteam
