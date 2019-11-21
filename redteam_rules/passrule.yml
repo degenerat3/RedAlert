@@ -10,6 +10,6 @@ filter:
 include:
 - "host"
 - "username"
-- "credential"
+- "password"
 alert:
 - "elastalert_modules.red_alerts.SlackPasswordAlerter"
