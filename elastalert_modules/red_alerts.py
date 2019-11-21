@@ -29,19 +29,10 @@ class SlackPasswordAlerter(Alerter):
     # Alert is called
     def alert(self, matches):
 
-        # Matches is a list of match dictionaries.
-        # It contains more than one match when the alert has
-        # the aggregation option set
         for match in matches:
-                # basic_match_string will transform the match into the default
-                # human readable string format
-                match_string = "rotating_light: :rotating_light: " + str(BasicMatchString(self.rule, match))
+                match_string = ":rotating_light: :rotating_light: New credential for {}: {}: {}".format(match['host'], match['username'], match['password'])
                 self.send_slack_msg(match_string)
-                #output_file.write(match_string)
 
-    # get_info is called after an alert is sent to get data that is written back
-    # to Elasticsearch in the field "alert_info"
-    # It should return a dict of information relevant to what the alert does
     def get_info(self):
         return {'type': 'Slack Password Alerter',
                 'Slack Channel': self.scn}
