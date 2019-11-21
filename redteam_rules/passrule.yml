@@ -2,6 +2,7 @@ name: "New Password Rule"
 es_host: elasticsearch_url
 es_port: elasticsearch_port
 type: "elastalert_modules.red_rules.NewPassRule"
+filter:
 - query:
     query_string:
       query: "logtype: CREDENTIAL"
