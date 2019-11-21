@@ -20,7 +20,6 @@ class SlackPasswordAlerter(Alerter):
                 break
             else:
                 scid = ""
-        print(scid)
         sc.chat_postMessage(
             channel=scid,
             text=sendstr
